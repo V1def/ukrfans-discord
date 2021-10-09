@@ -13,16 +13,20 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Ukrfans. If not, see <https://www.gnu.org/licenses/>.
 
-"""Main file."""
+"""Discord slash commands parameters."""
 
-from .core.bot import Bot
-
-
-def main() -> None:
-    """Main function."""
-    bot = Bot()
-    bot.run()
+from disnake.ext.commands import Param
 
 
-if __name__ == '__main__':
-    main()
+# Discord server member parameter.
+member_param = Param(
+    name="учасник",
+    desc="Вкажіть користувача"
+)
+
+# Reason parameter.
+reason_param = Param(
+    None,
+    name="причина",
+    desc="Вкажіть причину"
+)

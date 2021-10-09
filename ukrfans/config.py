@@ -16,6 +16,8 @@
 """Config file."""
 
 import os
+from pathlib import Path
+from typing import List
 
 import disnake
 import dotenv
@@ -26,6 +28,29 @@ dotenv.load_dotenv(dotenv.find_dotenv())
 # Discord bot token.
 BOT_TOKEN: str = os.getenv('BOT_TOKEN')
 # Reconnecting bot.
-BOT_RECONNECT: bool = (os.getenv('BOT_RECONNECT', 'False') == 'True')
+BOT_RECONNECT: bool = (os.getenv('BOT_RECONNECT', 'false') == 'true')
 # Discord bot intents.
 BOT_INTENTS: disnake.Intents = disnake.Intents.all()
+
+# Embed color.
+EMBED_COLOR: int = 0x215AF4
+
+# Debug mode.
+DEBUG: bool = (os.getenv('DEBUG', 'false') == 'true')
+
+# Log file path.
+LOG_FILE_PATH: Path = "ukrfans/ukrfans-log.log"
+# Compression log file.
+LOGGER_COMPRESSION: str = 'zip'
+# Rotation log file.
+LOGGER_ROTATION: str = '10 MB'
+
+# The path to the bot commands that will work.
+EXTENSION_PATH_LIST: List[str] = [
+    'ukrfans.modules.moderation'
+]
+
+# Testing guilds id.
+TEST_GUILDS: List[int] = [
+    851185360146923520
+]

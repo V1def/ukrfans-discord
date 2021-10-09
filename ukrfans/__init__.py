@@ -13,22 +13,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Ukrfans. If not, see <https://www.gnu.org/licenses/>.
 
-"""
-The main file of the bot that is responsible for its connection and operation.
-"""
+from .core.logger import init_logging
 
-from disnake.ext import commands
-
-import config as cfg
-
-
-class Bot(commands.Bot):
-    """The main class the bot."""
-
-    def __init__(self) -> None:
-        super().__init__(command_prefix="!", intents=cfg.BOT_INTENTS)
-
-    def run(self) -> None:
-        """Running the bot."""
-        # Running the bot with a token.
-        super().run(cfg.BOT_TOKEN, reconnect=cfg.BOT_RECONNECT)
+# Initialize logger handler.
+init_logging()
