@@ -14,6 +14,8 @@ Create an `.env` file in the root directory and add the following values ​​f
 BOT_TOKEN=
 # Reconnecting bot.
 BOT_RECONNECT=true
+# Debug mode.
+DEBUG=false
 ```
 Use `python -m ukrfans` to run bot.
 

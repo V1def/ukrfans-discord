@@ -15,18 +15,38 @@
 
 """Discord slash commands parameters."""
 
-from disnake.ext.commands import Param
+from typing import Dict
 
+from disnake.ext.commands import Param
 
 # Discord server member parameter.
 member_param = Param(
     name="учасник",
-    desc="Вкажіть користувача"
+    desc="Вкажіть учасника."
 )
 
 # Reason parameter.
 reason_param = Param(
     None,
     name="причина",
-    desc="Вкажіть причину"
+    desc="Вкажіть причину."
+)
+
+# Delete message in days choices.
+delete_message_days_choices: Dict[str, int] = {
+    "За 1 день": 1,
+    "За 2 дні": 2,
+    "За 3 дня": 3,
+    "За 4 днів": 4,
+    "За 5 днів": 5,
+    "За 6 днів": 6,
+    "За 7 днів": 7
+}
+
+# Delete message in days parameter.
+delete_message_days_param = Param(
+    None,
+    name="видалити-повідомлення",
+    desc="Виберіть кількість днів.",
+    choices=delete_message_days_choices
 )

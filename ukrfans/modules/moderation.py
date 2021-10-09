@@ -89,17 +89,58 @@ class Moderation(commands.Cog):
             if inter.author.id != inter.guild.owner.id:
                 raise NotImplementedError  # Soon to be
 
+        # Send embed to channel.
         await send_mod_embed(
             inter, f"Учасник {member} був вигнаний з сервера :neutral_face:",
             reason
         )
 
+        # Send embed to member dm.
         await send_private_mod_embed(
             member, f"Ти був вигнаний з сервера {inter.guild} :confused:",
             reason
         )
 
-        await member.kick(reason)
+        # Kick member in the guild.
+        await member.kick(reason=reason)
+
+    @commands.guild_only()
+    @commands.has_permissions(ban_members=True)
+    @commands.slash_command(
+        name="заблокувати",
+        description="Команда блокує вказаного вами учасника на сервері."
+    )
+    async def ban(
+        self,
+        inter: disnake.MessageCommandInteraction,
+        member: disnake.Member = param.member_param,
+        reason: str = param.reason_param,
+        delete_message_days: int = param.delete_message_days_param
+    ) -> None:
+        """The command that blocked the specified member from the guild"""
+        # Check to execute the command.
+        if inter.author.id == member.id and inter.guild.owner.id:
+            raise NotImplementedError  # Soon to be
+        elif inter.author.top_role.position < member.top_role.position:
+            if inter.author.id != inter.guild.owner.id:
+                raise NotImplementedError  # Soon to be
+
+        # Send embed to channel.
+        await send_mod_embed(
+            inter, f"Учасник {member} був заблокований на сервері :frowning2:",
+            reason
+        )
+
+        # Send embed to member dm.
+        await send_private_mod_embed(
+            member, f"Ти був заблокований на сервері {inter.guild} :no_mouth:",
+            reason
+        )
+
+        # Ban member in the guild.
+        await member.ban(
+            reason=reason, delete_message_days=delete_message_days
+        )
 
 
 def setup(bot: commands.Bot) -> None:
