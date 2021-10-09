@@ -18,7 +18,7 @@
 import disnake
 from disnake.ext import commands
 
-from .. import config, param
+from .. import config, param, errors
 
 
 async def send_mod_embed(
@@ -84,10 +84,10 @@ class Moderation(commands.Cog):
         """The command that expels the specified member from the guild"""
         # Check to execute the command.
         if inter.author.id == member.id and inter.guild.owner.id:
-            raise NotImplementedError  # Soon to be
+            raise errors.MemberProtected
         elif inter.author.top_role.position < member.top_role.position:
             if inter.author.id != inter.guild.owner.id:
-                raise NotImplementedError  # Soon to be
+                raise errors.MemberTopRolePosition
 
         # Send embed to channel.
         await send_mod_embed(
@@ -120,10 +120,10 @@ class Moderation(commands.Cog):
         """The command that blocked the specified member from the guild"""
         # Check to execute the command.
         if inter.author.id == member.id and inter.guild.owner.id:
-            raise NotImplementedError  # Soon to be
+            raise errors.MemberProtected
         elif inter.author.top_role.position < member.top_role.position:
             if inter.author.id != inter.guild.owner.id:
-                raise NotImplementedError  # Soon to be
+                raise errors.MemberTopRolePosition
 
         # Send embed to channel.
         await send_mod_embed(
