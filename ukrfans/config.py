@@ -50,7 +50,8 @@ LOGGER_ROTATION: str = '10 MB'
 # The path to the bot commands that will work.
 EXTENSION_PATH_LIST: List[str] = [
     'ukrfans.events.error',
-    'ukrfans.modules.moderation'
+    'ukrfans.modules.moderation',
+    'ukrfans.modules.information'
 ]
 
 # Testing guilds id.

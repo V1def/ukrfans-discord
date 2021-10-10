@@ -13,9 +13,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Ukrfans. If not, see <https://www.gnu.org/licenses/>.
 
-"""
-The main file of the bot that is responsible for its connection and operation.
-"""
+"""The main file of the bot that is responsible for its connection and operation."""
 
 from disnake.ext import commands
 from loguru import logger
@@ -46,9 +44,7 @@ class Bot(commands.Bot):
                     extension=extension, error=e
                 )
             else:
-                logger.info(
-                    "Extension '{extension}' loaded!", extension=extension
-                )
+                logger.info("Extension '{extension}' loaded!", extension=extension)
 
     def run(self) -> None:
         """Running the bot."""

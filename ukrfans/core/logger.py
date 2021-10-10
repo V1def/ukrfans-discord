@@ -46,9 +46,7 @@ class InterceptHandler(logging.Handler):
 
 
 def init_logging() -> None:
-    """
-    Replaces logging handlers with a handler for using the custom handler.
-    """
+    """Replaces logging handlers with a handler for using the custom handler."""
     # Change handler for default aioredis logger
     intercept_handler = InterceptHandler()
     logging.getLogger('disnake').handlers = [intercept_handler]
