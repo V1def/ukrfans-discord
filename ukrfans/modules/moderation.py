@@ -15,16 +15,18 @@
 
 """Moderation bot commands."""
 
+from typing import Optional
+
 import disnake
 from disnake.ext import commands
 
-from .. import config, param, errors
+from .. import config, errors, param
 
 
 async def send_mod_embed(
     inter: disnake.MessageCommandInteraction,
     description: str,
-    reason: str = None
+    reason: Optional[str] = None
 ) -> None:
     """Send moderaton embed to the guild."""
     # Creating a new discord embed.
@@ -34,7 +36,7 @@ async def send_mod_embed(
     )
 
     # Check fot indication of the reason.
-    if not (reason is None):
+    if reason is not None:
         embed.add_field(
             name=":envelope: По причині:", value=f"*{reason}*", inline=False
         )
@@ -45,7 +47,7 @@ async def send_mod_embed(
 async def send_private_mod_embed(
     member: disnake.Member,
     description: str,
-    reason: str = None
+    reason: Optional[str] = None
 ) -> None:
     """Send private moderaton embed to the guild."""
     # Creating a new discord embed.
@@ -55,7 +57,7 @@ async def send_private_mod_embed(
     )
 
     # Check fot indication of the reason.
-    if not (reason is None):
+    if reason is not None:
         embed.add_field(
             name=":envelope: По причині:", value=f"*{reason}*", inline=False
         )
