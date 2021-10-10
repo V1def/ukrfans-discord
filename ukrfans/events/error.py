@@ -18,7 +18,40 @@
 import disnake
 from disnake.ext import commands
 
-from .. import errors
+from .. import errors, config
+
+
+async def send_debug_slash_error(
+    inter: disnake.MessageCommandInteraction,
+    error: commands.CommandError
+) -> None:
+    """Send slash debug error."""
+    # Creating a new discird embed.
+    embed = disnake.Embed(
+        color=config.EMBED_ERROR_COLOR,
+        title="Сталася помилка :thinking:",
+        description=error
+    )
+    embed.set_footer(
+        text="Увімкнений DEBUG режим",
+        icon_url=inter.author.avatar.url
+    )
+
+    await inter.response.send_message(embed=embed, ephemeral=True)
+
+
+async def send_slash_error(
+    inter: disnake.MessageCommandInteraction,
+    description: str
+) -> None:
+    """Send slash error."""
+    # Creating a new discird embed.
+    embed = disnake.Embed(
+        color=config.EMBED_COLOR,
+        description=f"{inter.author.mention}, {description}"
+    )
+
+    await inter.response.send_message(embed=embed, ephemeral=True)
 
 
 class Error(commands.Cog):
@@ -34,8 +67,22 @@ class Error(commands.Cog):
         error: commands.CommandError
     ) -> None:
         """Slash commands error handling."""
-        if isinstance(error, errors.MemberProtected):
-            return await inter.response.send_message("test message")
+        # If command not found.
+        if isinstance(error, commands.CommandNotFound):
+            return
+        # Send debug error.
+        elif config.DEBUG:
+            return await send_debug_slash_error(inter, error)
+        # If the specified member is the author or owner.
+        elif isinstance(error, errors.MemberProtected):
+            return await send_slash_error(
+                inter, "цю команду не можна використати на собі або власникові! :slight_smile:"
+            )
+        # If the specified member is higher for you in the role.
+        elif isinstance(error, errors.MemberTopRolePosition):
+            return await send_slash_error(
+                inter, "цю команду не можна використати на учаснику вище тебе по ролі! :wink:"
+            )
 
 
 def setup(bot: commands.Bot) -> None:

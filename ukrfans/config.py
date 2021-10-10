@@ -34,6 +34,8 @@ BOT_INTENTS: disnake.Intents = disnake.Intents.all()
 
 # Embed color.
 EMBED_COLOR: int = 0x215AF4
+# Error embed color.
+EMBED_ERROR_COLOR: int = 0xFF0800
 
 # Debug mode.
 DEBUG: bool = (os.getenv('DEBUG', 'false') == 'true')

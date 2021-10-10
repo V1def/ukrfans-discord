@@ -38,7 +38,9 @@ async def send_mod_embed(
     # Check fot indication of the reason.
     if reason is not None:
         embed.add_field(
-            name=":envelope: По причині:", value=f"*{reason}*", inline=False
+            name=":envelope: По причині:",
+            value=f"*{reason}*",
+            inline=False
         )
 
     await inter.response.send_message(embed=embed)
@@ -59,7 +61,9 @@ async def send_private_mod_embed(
     # Check fot indication of the reason.
     if reason is not None:
         embed.add_field(
-            name=":envelope: По причині:", value=f"*{reason}*", inline=False
+            name=":envelope: По причині:",
+            value=f"*{reason}*",
+            inline=False
         )
 
     await member.send(embed=embed)
@@ -85,7 +89,7 @@ class Moderation(commands.Cog):
     ) -> None:
         """The command that expels the specified member from the guild"""
         # Check to execute the command.
-        if inter.author.id == member.id and inter.guild.owner.id:
+        if member.id in (inter.author.id, inter.guild.owner.id):
             raise errors.MemberProtected
         elif inter.author.top_role.position < member.top_role.position:
             if inter.author.id != inter.guild.owner.id:
@@ -93,14 +97,12 @@ class Moderation(commands.Cog):
 
         # Send embed to channel.
         await send_mod_embed(
-            inter, f"Учасник {member} був вигнаний з сервера :neutral_face:",
-            reason
+            inter, f"Учасник {member} був вигнаний з сервера :neutral_face:", reason
         )
 
         # Send embed to member dm.
         await send_private_mod_embed(
-            member, f"Ти був вигнаний з сервера {inter.guild} :confused:",
-            reason
+            member, f"Ти був вигнаний з сервера {inter.guild} :confused:", reason
         )
 
         # Kick member in the guild.
@@ -121,7 +123,7 @@ class Moderation(commands.Cog):
     ) -> None:
         """The command that blocked the specified member from the guild"""
         # Check to execute the command.
-        if inter.author.id == member.id and inter.guild.owner.id:
+        if member.id in (inter.author.id, inter.guild.owner.id):
             raise errors.MemberProtected
         elif inter.author.top_role.position < member.top_role.position:
             if inter.author.id != inter.guild.owner.id:
@@ -129,19 +131,18 @@ class Moderation(commands.Cog):
 
         # Send embed to channel.
         await send_mod_embed(
-            inter, f"Учасник {member} був заблокований на сервері :frowning2:",
-            reason
+            inter, f"Учасник {member} був заблокований на сервері :frowning2:", reason
         )
 
         # Send embed to member dm.
         await send_private_mod_embed(
-            member, f"Ти був заблокований на сервері {inter.guild} :no_mouth:",
-            reason
+            member, f"Ти був заблокований на сервері {inter.guild} :no_mouth:", reason
         )
 
         # Ban member in the guild.
         await member.ban(
-            reason=reason, delete_message_days=delete_message_days
+            reason=reason,
+            delete_message_days=delete_message_days
         )
 
 
