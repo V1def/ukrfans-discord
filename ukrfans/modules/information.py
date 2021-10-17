@@ -31,7 +31,7 @@ class Information(commands.Cog):
         name="github",
         description="Команда надсилає посилання на репозиторій бота."
     )
-    async def kick(self, inter: disnake.MessageCommandInteraction,) -> None:
+    async def github(self, inter: disnake.MessageCommandInteraction) -> None:
         """The command sends the bot github repository."""
         # Create and send embed.
         embed = disnake.Embed(
