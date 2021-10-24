@@ -13,24 +13,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Ukrfans. If not, see <https://www.gnu.org/licenses/>.
 
-# Editor configuration, see https://editorconfig.org
+.PHONY: install
+install:
+	poetry install
 
-root = true
+.PHONY: run
+run: install
+	python -m ukrfans
 
-[*]
-insert_final_newline = true
-charset = utf-8
-trim_trailing_whitespace = true
-indent_style = space
-indent_size = 2
+.PHONY: migrate-create
+migrate-create:
+	migrate create -ext sql -dir ./schema -seq ukrfans
 
-[*.py]
-indent_size = 4
+.PHONY: migrate-up
+migrate-up:
+	migrate -path ./schema -database '$(DATABASE_URL)?sslmode=disable' up
 
-[*.md]
-max_line_length = off
-trim_trailing_whitespace = false
+.PHONY: migrate-down
+migrate-down:
+	migrate -path ./schema -database '$(DATABASE_URL)?sslmode=disable' down
 
-[Makefile]
-indent_style = tab
-indent_size = 4
+.DEFAULT_GOAL := run

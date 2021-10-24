@@ -6,6 +6,7 @@ Discord bot for Ukrfans Discord server.
 
 ### 💡 Prerequisites
 + [Python](https://www.python.org/)
++ [migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
 
 ## ⚙️ Build & Run
 Create an `.env` file in the root directory and add the following values ​​from `.env.example`:
@@ -20,7 +21,7 @@ DEBUG=false
 # PostgreSQL database URL.
 DATABASE_URL=
 ```
-Use `python -m ukrfans` to run bot.
+Use `make run` to run bot.
 
 ## ⚠️ License
 Copyright © 2021 [V1def](https://github.com/V1def). Released under the [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html) license.
