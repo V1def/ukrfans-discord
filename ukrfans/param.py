@@ -25,6 +25,12 @@ member_param = Param(
     desc="Вкажіть учасника."
 )
 
+# Discord server member parameter.
+member_param = Param(
+    name="учасник",
+    desc="Вкажіть учасника."
+)
+
 # Reason parameter.
 reason_param = Param(
     None,
@@ -50,4 +56,10 @@ delete_message_days_param = Param(
     name="видалити-повідомлення",
     desc="Виберіть кількість днів.",
     choices=delete_message_days_choices
+)
+
+# Discord user name parameter.
+user_param = Param(
+    name="користувач",
+    desc="Вкажіть користувача з його тегом, приклад: User#0000"
 )

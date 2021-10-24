@@ -85,7 +85,7 @@ class Moderation(commands.Cog):
         self,
         inter: disnake.MessageCommandInteraction,
         member: disnake.Member = param.member_param,
-        reason: str = param.reason_param
+        reason: Optional[str] = param.reason_param
     ) -> None:
         """The command that expels the specified member from the guild"""
         # Check to execute the command.
@@ -118,7 +118,7 @@ class Moderation(commands.Cog):
         self,
         inter: disnake.MessageCommandInteraction,
         member: disnake.Member = param.member_param,
-        reason: str = param.reason_param,
+        reason: Optional[str] = param.reason_param,
         delete_message_days: int = param.delete_message_days_param
     ) -> None:
         """The command that blocked the specified member from the guild"""
@@ -144,6 +144,37 @@ class Moderation(commands.Cog):
             reason=reason,
             delete_message_days=delete_message_days
         )
+
+    @commands.guild_only()
+    @commands.has_permissions(ban_members=True)
+    @commands.slash_command(
+        name="розблокувати",
+        description="Команда розблоковує вказаного вами учасника на сервері."
+    )
+    async def unban(
+        self,
+        inter: disnake.MessageCommandInteraction,
+        user: str = param.user_param,
+        reason: Optional[str] = param.reason_param
+    ) -> None:
+        """The command that unblock the specified user from the guild."""
+        bans = await inter.guild.bans()
+        name, discriminator = user.split('#')
+
+        # Search for a user in guild bans.
+        for users in bans:
+            ban_user = users.user
+
+            # User verification.
+            if (ban_user.name, ban_user.discriminator) == (name, discriminator):
+                await send_mod_embed(
+                    inter, f"Користувач **{user}** був розблокований! :partying_face:", reason
+                )
+                # Unban user in the guild.
+                await inter.guild.unban(user, reason)
+
+        # Send a message if the user was not found.
+        await send_mod_embed(inter, f"Користувача **{user}** не було знайдено! :man_shrugging:")
 
 
 def setup(bot: commands.Bot) -> None:
