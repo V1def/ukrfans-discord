@@ -70,7 +70,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "disnake"
-version = "2.1.2"
+version = "2.1.4"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
@@ -235,8 +235,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 disnake = [
-    {file = "disnake-2.1.2-py3-none-any.whl", hash = "sha256:0ab360eabc827464d377ab29fa34bc32b28cf673b8c399fcdc03ef57947c7823"},
-    {file = "disnake-2.1.2.tar.gz", hash = "sha256:cb876131d6e19bbeb8e0357e8aab6364e6853e06a8791dfec739507c8eff3036"},
+    {file = "disnake-2.1.4-py3-none-any.whl", hash = "sha256:5e669542934df3318e49691716a1c3f1f698afcd46011c93557549142cb3a8f1"},
+    {file = "disnake-2.1.4.tar.gz", hash = "sha256:11443db320e027ac0f28db226213f2581dd18c89e02e303dacc553d06546702d"},
 ]
 idna = [
     {file = "idna-3.2-py3-none-any.whl", hash = "sha256:14475042e284991034cb48e06f6851428fb14c4dc953acd9be9a5e95c7b6dd7a"},

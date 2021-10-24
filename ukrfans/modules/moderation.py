@@ -72,7 +72,7 @@ async def send_private_mod_embed(
 class Moderation(commands.Cog):
     """Moderation commands."""
 
-    def __init__(self, bot: commands.Bot) -> None:
+    def __init__(self, bot: commands.InteractionBot) -> None:
         self.bot = bot
 
     @commands.guild_only()
@@ -177,6 +177,6 @@ class Moderation(commands.Cog):
         await send_mod_embed(inter, f"Користувача **{user}** не було знайдено! :man_shrugging:")
 
 
-def setup(bot: commands.Bot) -> None:
+def setup(bot: commands.InteractionBot) -> None:
     """Adding cog to bot."""
     bot.add_cog(Moderation(bot))

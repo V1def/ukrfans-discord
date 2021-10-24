@@ -24,7 +24,7 @@ from .. import config
 class Information(commands.Cog):
     """Information commands."""
 
-    def __init__(self, bot: commands.Bot) -> None:
+    def __init__(self, bot: commands.InteractionBot) -> None:
         self.bot = bot
 
     @commands.slash_command(
@@ -43,6 +43,6 @@ class Information(commands.Cog):
         await inter.response.send_message(embed=embed)
 
 
-def setup(bot: commands.Bot) -> None:
+def setup(bot: commands.InteractionBot) -> None:
     """Adding cog to bot."""
     bot.add_cog(Information(bot))

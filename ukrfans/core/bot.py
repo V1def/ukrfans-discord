@@ -21,12 +21,11 @@ from loguru import logger
 from .. import config
 
 
-class Bot(commands.Bot):
+class Bot(commands.InteractionBot):
     """The main class the bot."""
 
     def __init__(self) -> None:
         super().__init__(
-            command_prefix="!",
             intents=config.BOT_INTENTS,
             test_guilds=config.TEST_GUILDS
         )
