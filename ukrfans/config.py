@@ -47,6 +47,13 @@ LOGGER_COMPRESSION: str = 'zip'
 # Rotation log file.
 LOGGER_ROTATION: str = '10 MB'
 
+# PostgreSQL database URL.
+DATABASE_URL: str = os.getenv('DATABASE_URL')
+# Maximum connections to PostgreSQL database.
+MAX_DB_CONNECTIONS: int = os.getenv('MAX_DB_CONNECTIONS', 10)
+# Minimum connections to PostgreSQL database.
+MIN_DB_CONNECTIONS: int = os.getenv('MIN_DB_CONNECTIONS', 10)
+
 # The path to the bot commands that will work.
 EXTENSION_PATH_LIST: List[str] = [
     'ukrfans.events.error',

@@ -16,6 +16,9 @@ BOT_TOKEN=
 BOT_RECONNECT=true
 # Debug mode.
 DEBUG=false
+
+# PostgreSQL database URL.
+DATABASE_URL=
 ```
 Use `python -m ukrfans` to run bot.
 
@@ -26,3 +29,4 @@ Copyright © 2021 [V1def](https://github.com/V1def). Released under the [GNU AGP
 + [disnake](https://github.com/EQUENOS/disnake/blob/master/LICENSE)
 + [python-dotenv](https://github.com/theskumar/python-dotenv/blob/master/LICENSE)
 + [loguru](https://github.com/Delgan/loguru/blob/master/LICENSE)
++ [asyncpg](https://github.com/MagicStack/asyncpg/blob/master/LICENSE)
