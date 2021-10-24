@@ -34,6 +34,7 @@ reason_param = Param(
 
 # Delete message in days choices.
 delete_message_days_choices: Dict[str, int] = {
+    "Не видаляти": 0,
     "За 1 день": 1,
     "За 2 дні": 2,
     "За 3 дня": 3,
@@ -45,7 +46,7 @@ delete_message_days_choices: Dict[str, int] = {
 
 # Delete message in days parameter.
 delete_message_days_param = Param(
-    None,
+    0,
     name="видалити-повідомлення",
     desc="Виберіть кількість днів.",
     choices=delete_message_days_choices
