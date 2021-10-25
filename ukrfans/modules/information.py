@@ -42,6 +42,59 @@ class Information(commands.Cog):
 
         await inter.response.send_message(embed=embed)
 
+    @commands.guild_only()
+    @commands.slash_command(
+        name="сервер",
+        description="Команда виводить всю доступну інформацію про даний сервер."
+    )
+    async def server(self, inter: disnake.MessageCommandInteraction) -> None:
+        """The command sends all available information about this guild."""
+        # Creating a new embed.
+        embed = disnake.Embed(
+            color=config.EMBED_COLOR,
+            title=f"Інформація про {inter.guild.name}"
+        )
+        # Add to embed time stamp guild creating date.
+        embed.timestamp = inter.guild.created_at
+        # Add to embed thumbnail guild avatar.
+        embed.set_thumbnail(url=inter.guild.icon.url)
+        # Embed members field.
+        embed.add_field(
+            name="Учасники:",
+            inline=False,
+            value=(
+                f"> :busts_in_silhouette: Кількість: **{inter.guild.member_count}**"
+            )
+        )
+        # Embed channels filed.
+        embed.add_field(
+            name="Канали:",
+            inline=False,
+            value=(
+                f"> :pushpin: Категорій: **{len(inter.guild.categories)}**\n"
+                f"> :pencil: Текстових: **{len(inter.guild.text_channels)}**\n"
+                f"> :loud_sound: Голосових: **{len(inter.guild.voice_channels)}**"
+            )
+        )
+        # Embed guild field.
+        embed.add_field(
+            name="Сервер:",
+            inline=False,
+            value=(
+                f"> :scales: Ролів: **{len(inter.guild.roles)}**\n"
+                f"> :ice_cube: Емодзі: **{len(inter.guild.emojis)}**\n"
+                f"> :blue_book: Вебхуків: **{len(await inter.guild.webhooks())}**\n"
+                f"> :lock: Блокувань: **{len(await inter.guild.bans())}**\n"
+                f"> :diamonds: Бустерів: **{len(inter.guild.premium_subscribers)}"
+                f" ({inter.guild.premium_subscription_count})**\n"
+                f"> :crown: Власник: **{inter.guild.owner}**"
+            )
+        )
+        # Set embed footer.
+        embed.set_footer(text="Сервер створений", icon_url=inter.author.avatar.url)
+
+        await inter.response.send_message(embed=embed)
+
 
 def setup(bot: commands.InteractionBot) -> None:
     """Adding cog to bot."""
