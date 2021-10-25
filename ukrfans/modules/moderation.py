@@ -21,6 +21,7 @@ import disnake
 from disnake.ext import commands
 
 from .. import config, errors, param
+from ..core.bot import Bot
 
 
 async def send_mod_embed(
@@ -72,7 +73,7 @@ async def send_private_mod_embed(
 class Moderation(commands.Cog):
     """Moderation commands."""
 
-    def __init__(self, bot: commands.InteractionBot) -> None:
+    def __init__(self, bot: Bot) -> None:
         self.bot = bot
 
     @commands.guild_only()
@@ -177,6 +178,6 @@ class Moderation(commands.Cog):
         await send_mod_embed(inter, f"Користувача **{user}** не було знайдено! :man_shrugging:")
 
 
-def setup(bot: commands.InteractionBot) -> None:
+def setup(bot: Bot) -> None:
     """Adding cog to bot."""
     bot.add_cog(Moderation(bot))

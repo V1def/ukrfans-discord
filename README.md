@@ -9,7 +9,29 @@ Discord bot for Ukrfans Discord server.
 + [migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
 
 ## ⚙️ Build & Run
-Create an `.env` file in the root directory and add the following values ​​from `.env.example`:
+1) The first thing to do is to clone the repository:
+```sh
+$ git clone https://github.com/V1def/ukrfans-discord.git
+$ cd ukrfans-discord
+```
+2) Create a virtual environment to install dependencies in and active it:
+
+**Windows:**
+```sh
+$ python -m venv venv
+$ .\env\Scripts\activate
+```
+
+**macOS and Linux:**
+```sh
+$ python3 venv venv
+$ source env/bin/activate
+```
+3) Then install the dependencies:
+```sh
+(venv) make install
+```
+4) Create an `.env` file in the root directory and add the following values ​​from `.env.example`:
 ```env
 # Discord bot token.
 BOT_TOKEN=

@@ -18,7 +18,7 @@ install:
 	poetry install
 
 .PHONY: run
-run: install
+run:
 	python -m ukrfans
 
 .PHONY: migrate-create

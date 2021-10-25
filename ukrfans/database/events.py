@@ -16,13 +16,13 @@
 """Events connecting and disconnecting to the PostgreSQL database."""
 
 import asyncpg
-from disnake.ext.commands import InteractionBot
 from loguru import logger
 
 from .. import config
+from ..core.bot import Bot
 
 
-async def connect_to_db(bot: InteractionBot) -> None:
+async def connect_to_db(bot: Bot) -> None:
     """PostgreSQL database connection."""
     logger.info("Connecting to PostgreSQL database...")
 
@@ -37,7 +37,7 @@ async def connect_to_db(bot: InteractionBot) -> None:
         logger.error("Error connection to PostgreSQL database: {error}", error=e)
 
 
-async def close_db_connection(bot: InteractionBot) -> None:
+async def close_db_connection(bot: Bot) -> None:
     """Close the PostgreSQL database. connection."""
     logger.info("Closing connection to PostgreSQL database...")
 

@@ -19,12 +19,13 @@ import disnake
 from disnake.ext import commands
 
 from .. import config
+from ..core.bot import Bot
 
 
 class Information(commands.Cog):
     """Information commands."""
 
-    def __init__(self, bot: commands.InteractionBot) -> None:
+    def __init__(self, bot: Bot) -> None:
         self.bot = bot
 
     @commands.slash_command(
@@ -96,6 +97,6 @@ class Information(commands.Cog):
         await inter.response.send_message(embed=embed)
 
 
-def setup(bot: commands.InteractionBot) -> None:
+def setup(bot: Bot) -> None:
     """Adding cog to bot."""
     bot.add_cog(Information(bot))
