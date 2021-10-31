@@ -58,7 +58,8 @@ MIN_DB_CONNECTIONS: int = os.getenv('MIN_DB_CONNECTIONS', 10)
 EXTENSION_PATH_LIST: List[str] = [
     'ukrfans.events.error',
     'ukrfans.modules.moderation',
-    'ukrfans.modules.information'
+    'ukrfans.modules.information',
+    'ukrfans.modules.utility'
 ]
 
 # Testing guilds id.

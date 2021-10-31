@@ -19,14 +19,15 @@ from typing import Dict
 
 from disnake.ext.commands import Param
 
-# Discord server member parameter.
+# Discord guild member parameter.
 member_param = Param(
     name="учасник",
     desc="Вкажіть учасника."
 )
 
-# Discord server member parameter.
-member_param = Param(
+# Discord optional guild member parameter.
+optional_member_param = Param(
+    None,
     name="учасник",
     desc="Вкажіть учасника."
 )
