@@ -47,11 +47,11 @@ class InterceptHandler(logging.Handler):
 
 def init_logging() -> None:
     """Replaces logging handlers with a handler for using the custom handler."""
-    # Change handler for default aioredis logger
+    # Change handler for default aioredis logger.
     intercept_handler = InterceptHandler()
     logging.getLogger('disnake').handlers = [intercept_handler]
 
-    # Set logs output, level and format
+    # Set logs output, level and format.
     LOGGING_LEVEL = logging.DEBUG if config.DEBUG else logging.INFO
 
     logger.configure(
@@ -67,7 +67,7 @@ def init_logging() -> None:
         ]
     )
 
-    # Record logs to a file
+    # Record logs to a file.
     logger.add(
         config.LOG_FILE_PATH, compression=config.LOGGER_COMPRESSION,
         level=LOGGING_LEVEL, rotation=config.LOGGER_ROTATION,

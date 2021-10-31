@@ -17,7 +17,6 @@
 
 import os
 from pathlib import Path
-from typing import List
 
 import disnake
 import dotenv
@@ -55,7 +54,7 @@ MAX_DB_CONNECTIONS: int = os.getenv('MAX_DB_CONNECTIONS', 10)
 MIN_DB_CONNECTIONS: int = os.getenv('MIN_DB_CONNECTIONS', 10)
 
 # The path to the bot commands that will work.
-EXTENSION_PATH_LIST: List[str] = [
+EXTENSION_PATH_LIST: list[str] = [
     'ukrfans.events.error',
     'ukrfans.modules.moderation',
     'ukrfans.modules.information',
@@ -63,6 +62,6 @@ EXTENSION_PATH_LIST: List[str] = [
 ]
 
 # Testing guilds id.
-TEST_GUILDS: List[int] = [
+TEST_GUILDS: list[int] = [
     851185360146923520
 ]

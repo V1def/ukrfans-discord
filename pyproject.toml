@@ -6,7 +6,7 @@ authors = ["V1def"]
 license = "AGPL"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 disnake = "^2.1.2"
 loguru = "^0.5.3"
 asyncpg = "^0.24.0"

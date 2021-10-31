@@ -27,7 +27,7 @@ from ..core.bot import Bot
 async def send_mod_embed(
     inter: disnake.MessageCommandInteraction,
     description: str,
-    reason: Optional[str] = None
+    reason: str | None = None
 ) -> None:
     """Send moderaton embed to the guild."""
     # Creating a new discord embed.
@@ -50,7 +50,7 @@ async def send_mod_embed(
 async def send_private_mod_embed(
     member: disnake.Member,
     description: str,
-    reason: Optional[str] = None
+    reason: str | None = None
 ) -> None:
     """Send private moderaton embed to the guild."""
     # Creating a new discord embed.

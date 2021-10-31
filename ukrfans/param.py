@@ -15,8 +15,6 @@
 
 """Discord slash commands parameters."""
 
-from typing import Dict
-
 from disnake.ext.commands import Param
 
 # Discord guild member parameter.
@@ -40,7 +38,7 @@ reason_param = Param(
 )
 
 # Delete message in days choices.
-delete_message_days_choices: Dict[str, int] = {
+delete_message_days_choices: dict[str, int] = {
     "Не видаляти": 0,
     "За 1 день": 1,
     "За 2 дні": 2,
