@@ -30,7 +30,7 @@ class Utility(commands.Cog):
 
     @commands.slash_command(
         name="аватар",
-        description="Команда виводить аватар учасника."
+        description="Команда виводить аватар користувача."
     )
     async def avatar(
         self,

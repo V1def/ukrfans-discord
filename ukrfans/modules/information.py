@@ -15,10 +15,12 @@
 
 """Information bot commands."""
 
+from typing import Optional
+
 import disnake
 from disnake.ext import commands
 
-from .. import config
+from .. import config, param
 from ..core.bot import Bot
 
 
@@ -94,6 +96,39 @@ class Information(commands.Cog):
         # Set embed footer.
         embed.set_footer(text="Сервер створений", icon_url=inter.author.avatar.url)
 
+        await inter.response.send_message(embed=embed)
+
+    @commands.slash_command(
+        name="користувач",
+        description="Команда виводить всю доступну інформацію про користувача."
+    )
+    async def user(
+        self,
+        inter: disnake.MessageCommandInteraction,
+        member: Optional[disnake.Member] = param.optional_member_param
+    ) -> None:
+        """The command sends all available information about user."""
+        if member is None:
+            member = inter.author
+
+        # Creating a new embed.
+        embed = disnake.Embed(
+            color=config.EMBED_COLOR,
+            title=f"Інформація про {member}"
+        )
+        # Add to embed thumbnail member avatar.
+        embed.set_thumbnail(url=member.avatar.url)
+        # Member time information field.
+        embed.add_field(
+            name="Часова інформація:",
+            inline=False,
+            value=(
+                f"> :calendar: Cтворено: **{member.created_at.strftime('%m.%d.%Y %H:%M')}**\n"
+                f"> :stopwatch: Приєднався: **{member.joined_at.strftime('%m.%d.%Y %H:%M')}**\n"
+            )
+        )
+        # Set embed footer.
+        embed.set_footer(text=f"ID: {member.id}", icon_url=member.avatar.url)
         await inter.response.send_message(embed=embed)
 
 
