@@ -56,12 +56,18 @@ MIN_DB_CONNECTIONS: int = os.getenv('MIN_DB_CONNECTIONS', 10)
 # The path to the bot commands that will work.
 EXTENSION_PATH_LIST: list[str] = [
     'ukrfans.events.error',
+    'ukrfans.events.message',
     'ukrfans.modules.moderation',
     'ukrfans.modules.information',
     'ukrfans.modules.utility'
 ]
 
-# Testing guilds id.
+# Testing guilds id list.
 TEST_GUILDS: list[int] = [
     851185360146923520
+]
+
+# Like channels id list.
+LIKE_CHANNELS: list[int] = [
+    852875679934578782
 ]
