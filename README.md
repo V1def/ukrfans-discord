@@ -43,6 +43,8 @@ DEBUG=false
 # PostgreSQL database URL.
 DATABASE_URL=
 ```
+5) Migrate the database using `make migrate-up`.
+
 Use `make run` to run bot.
 
 ## ⚠️ License
