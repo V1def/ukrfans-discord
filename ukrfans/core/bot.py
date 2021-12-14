@@ -15,16 +15,23 @@
 
 """The main file of the bot that is responsible for its connection and operation."""
 
+import asyncio
+
+import asyncpg
 from disnake.ext import commands
 from loguru import logger
 
 from .. import config
+from ..database.events import connect_to_db
 
 
 class Bot(commands.InteractionBot):
     """The main class the bot."""
 
     def __init__(self) -> None:
+        self.db_pool: asyncpg.Pool | None = None
+        self.loop = asyncio.get_event_loop()
+
         super().__init__(
             intents=config.BOT_INTENTS,
             test_guilds=config.TEST_GUILDS
@@ -47,8 +54,11 @@ class Bot(commands.InteractionBot):
 
     def run(self) -> None:
         """Running the bot."""
-        # Running the bot with a token.
+        # Create a new db pool connection.
+        self.loop.run_until_complete(connect_to_db(self))
+        # Load bot extension.
         self.load_extension()
+        # Running the bot with a token.
         super().run(config.BOT_TOKEN, reconnect=config.BOT_RECONNECT)
 
     async def on_connect(self) -> None:

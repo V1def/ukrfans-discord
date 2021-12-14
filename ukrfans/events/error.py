@@ -83,6 +83,11 @@ class Error(commands.Cog):
             return await send_slash_error(
                 inter, "цю команду не можна використати на учаснику вище тебе по ролі! :wink:"
             )
+        # If the command is already used.
+        elif isinstance(error, errors.AlreadyUsed):
+            return await send_slash_error(
+                inter, "ти вже використав цю команду! :shushing_face:"
+            )
 
 
 def setup(bot: commands.Bot) -> None:

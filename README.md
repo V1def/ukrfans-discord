@@ -49,7 +49,7 @@ Use `make run` to run bot.
 Copyright © 2021 [V1def](https://github.com/V1def). Released under the [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html) license.
 
 #### Third-party library licenses
-+ [disnake](https://github.com/EQUENOS/disnake/blob/master/LICENSE)
++ [disnake](https://github.com/DisnakeDev/disnake/blob/master/LICENSE)
 + [python-dotenv](https://github.com/theskumar/python-dotenv/blob/master/LICENSE)
 + [loguru](https://github.com/Delgan/loguru/blob/master/LICENSE)
 + [asyncpg](https://github.com/MagicStack/asyncpg/blob/master/LICENSE)

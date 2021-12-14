@@ -20,15 +20,11 @@ from disnake.ext.commands.errors import CommandError
 
 class MemberTopRolePosition(CommandError):
     """If the specified member is higher for you in the role."""
-    def __init__(self, message: str | None = None) -> None:
-        super().__init__(
-            message or "the specified member above you in the role."
-        )
 
 
 class MemberProtected(CommandError):
     """If the specified member is the author or owner."""
-    def __init__(self, message: str | None = None) -> None:
-        super().__init__(
-            message or "the specified member is the author or owner."
-        )
+
+
+class AlreadyUsed(CommandError):
+    """If you have already used this command."""

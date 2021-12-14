@@ -14,3 +14,10 @@
   You should have received a copy of the GNU Affero General Public License
   along with Ukrfans. If not, see <https://www.gnu.org/licenses/>.
 */
+
+CREATE TABLE IF NOT EXISTS "social_rating" (
+  "id"       BIGSERIAL NOT NULL UNIQUE,
+  "user_id"  BIGINT    NOT NULL,
+  "voted_id" BIGINT    NOT NULL,
+  "status"   BOOLEAN
+);

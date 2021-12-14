@@ -62,3 +62,17 @@ user_param = Param(
     name="користувач",
     desc="Вкажіть користувача з його тегом, приклад: User#0000"
 )
+
+# Social rating choices.
+social_rating_choices: dict[str, int] = {
+    "Зменшити": 0,
+    "Збільшити": 1,
+    "Видалити голос": 2,
+}
+
+# Social rating parameter.
+social_rating_param = Param(
+    name="дія",
+    desc="Виберіть як ви хочете змінити соціальний рейтинг користувача.",
+    choices=social_rating_choices
+)

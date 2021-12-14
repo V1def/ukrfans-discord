@@ -59,7 +59,8 @@ EXTENSION_PATH_LIST: list[str] = [
     'ukrfans.events.message',
     'ukrfans.modules.moderation',
     'ukrfans.modules.information',
-    'ukrfans.modules.utility'
+    'ukrfans.modules.utility',
+    'ukrfans.modules.social_rating'
 ]
 
 # Testing guilds id list.
