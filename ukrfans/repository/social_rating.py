@@ -51,21 +51,24 @@ class Repository:
             return 0
 
         # Create a new user vote.
-        query = f"UPDATE {social_rating_table} SET user_id=$1, voted_id=$2, status=$3 RETURNING id"
+        query = f"""
+        UPDATE {social_rating_table} SET status=$1
+        WHERE user_id = $2 AND voted_id = $3 RETURNING id
+        """
 
-        return await self.db_pool.execute(query, user_id, voted_id, status)
+        return await self.db_pool.execute(query, status, user_id, voted_id)
 
     async def get(self, user_id: int) -> int:
         """Get user social rating."""
         # Get all user count votes.
-        query = f"SELECT COUNT (*) FROM {social_rating_table} WHERE user_id = $1"
-        count = await self.db_pool.fetchrow(query, user_id)
+        query = f"SELECT COUNT (*) FROM {social_rating_table} WHERE user_id = $1 AND status = true"
+        good_count = await self.db_pool.fetchrow(query, user_id)
 
         # Get all user bad count votes.
         query = f"SELECT COUNT (*) FROM {social_rating_table} WHERE user_id = $1 AND status = false"
         bad_count = await self.db_pool.fetchrow(query, user_id)
 
-        return count[0] - bad_count[0]
+        return good_count[0] - bad_count[0]
 
     async def delete(self, user_id: int, voted_id: int) -> None:
         """Delete user vote."""

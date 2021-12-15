@@ -75,7 +75,7 @@ class SocialRating(commands.Cog):
             # Create a new embed.
             embed = disnake.Embed(
                 color=config.EMBED_COLOR,
-                description=f"Ви видали свій голос з соціального рейтингу {member.mention}"
+                description=f"Ви видалили свій голос з соціального рейтингу {member.mention}"
             )
 
             return await inter.response.send_message(embed=embed, ephemeral=True)
