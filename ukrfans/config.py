@@ -1,4 +1,4 @@
-# Copyright © 2021 V1def
+# Copyright © 2021-2022 V1def
 
 # This file is part of Ukrfans: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -70,5 +70,7 @@ TEST_GUILDS: list[int] = [
 
 # Like channels id list.
 LIKE_CHANNELS: list[int] = [
-    852875679934578782
+    989627210296090624,
+    989627366173179924,
+    989627416915890236
 ]
